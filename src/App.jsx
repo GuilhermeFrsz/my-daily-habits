@@ -1,7 +1,10 @@
+import { useState } from "react";
 import "./App.css";
 import HabitList from "./components/HabitList";
 import Panel from "./components/Panel";
 import { initialHabits } from "./data/habits";
+
+
 
 export default function App() {
   const completedCount = initialHabits.filter(
@@ -15,7 +18,8 @@ export default function App() {
       const goal = habit.goal === undefined
         ? "Sem meta definida"
         : habit.goal;
-      window.alert(`${habit.title} — Meta: ${goal}`);
+      console.log("Hábito solicitado:", habitId, habit);
+      window.alert(`| ID:${habit.id} \n${habit.title} — Meta: ${goal}`);
     }
   }
 
@@ -34,6 +38,9 @@ export default function App() {
           habits={initialHabits}
           onShowDetails={handleShowDetails}
         />
+      </Panel>
+      <Panel title="Sobre o projeto">
+        <p>My Daily Habits — projeto do Módulo 04.</p>
       </Panel>
     </main>
   );

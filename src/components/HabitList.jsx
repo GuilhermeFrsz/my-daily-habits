@@ -12,6 +12,7 @@ export default function HabitList({ habits, onShowDetails }) {
           key={habit.id}
           {...habit}
           onShowDetails={onShowDetails}
+          
         />
       ))}
     </section>
