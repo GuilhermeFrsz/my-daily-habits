@@ -85,27 +85,27 @@ Cada etapa tem critérios **verificáveis**. Leia os critérios antes de codar: 
 
 ### E5 · Formulário controlado (Aula 05 · 10 pts)
 
-- [ ] Existe um formulário com **Hábito** e **Meta**, ambos **controlados**: nenhum campo guarda o valor apenas no DOM.
-- [ ] O envio usa `onSubmit` com `event.preventDefault()`: a página **não recarrega**.
-- [ ] Envio **vazio** ou só com espaços mostra a mensagem **Preencha o hábito e a meta.** e **não** cria cartão. Preencher **só um** campo **mantém** o que foi digitado.
-- [ ] Em caso de sucesso: o cartão novo aparece, **campos e mensagem de erro são limpos**, o contador é atualizado e o hábito novo **alterna** como os outros.
-- [ ] Cada hábito novo recebe um `id` **próprio**, e não a posição na lista.
+- [X] Existe um formulário com **Hábito** e **Meta**, ambos **controlados**: nenhum campo guarda o valor apenas no DOM.
+- [X] O envio usa `onSubmit` com `event.preventDefault()`: a página **não recarrega**.
+- [X] Envio **vazio** ou só com espaços mostra a mensagem **Preencha o hábito e a meta.** e **não** cria cartão. Preencher **só um** campo **mantém** o que foi digitado.
+- [X] Em caso de sucesso: o cartão novo aparece, **campos e mensagem de erro são limpos**, o contador é atualizado e o hábito novo **alterna** como os outros.
+- [X] Cada hábito novo recebe um `id` **próprio**, e não a posição na lista.
 
 ### E6 · Efeitos, persistência e limpeza (Aula 06 · 10 pts)
 
-- [ ] Os hábitos **sobrevivem ao recarregamento** (F5), na chave `my-daily-habits:habits`.
-- [ ] A leitura inicial acontece **uma vez**, e não a cada renderização.
-- [ ] Se a chave não existir, se o JSON estiver inválido (teste com `{oops`) ou se o valor **não for uma lista**, a aplicação volta aos três hábitos iniciais **sem tela branca**.
-- [ ] O título da aba mostra **"X/Y hábitos concluídos"**, acompanha cliques e cadastros, e tem **função de limpeza** que restaura o título anterior.
-- [ ] Os arrays de dependência listam **exatamente** os valores lidos por cada efeito. Nada removido para calar aviso.
+- [X] Os hábitos **sobrevivem ao recarregamento** (F5), na chave `my-daily-habits:habits`.
+- [X] A leitura inicial acontece **uma vez**, e não a cada renderização.
+- [X] Se a chave não existir, se o JSON estiver inválido (teste com `{oops`) ou se o valor **não for uma lista**, a aplicação volta aos três hábitos iniciais **sem tela branca**.
+- [X] O título da aba mostra **"X/Y hábitos concluídos"**, acompanha cliques e cadastros, e tem **função de limpeza** que restaura o título anterior.
+- [X] Os arrays de dependência listam **exatamente** os valores lidos por cada efeito. Nada removido para calar aviso.
 
 ### E7 · Contexto (Aula 07 · 15 pts)
 
-- [ ] `HabitsProvider` possui o **estado**, a **persistência** e as **ações** (alternar e cadastrar), e expõe o **total de concluídos já calculado** (não é outro estado).
-- [ ] O Provider fica em `main.jsx`, **acima** de quem consome o contexto.
-- [ ] Os componentes consomem o contexto. **Nenhum componente intermediário recebe uma prop só para repassá-la**, e o `App` **não** possui estado de hábitos.
-- [ ] Se um componente for usado **fora do Provider**, o erro é **claro e informa isso**.
-- [ ] **Nada das etapas E5 e E6 quebra.**
+- [X] `HabitsProvider` possui o **estado**, a **persistência** e as **ações** (alternar e cadastrar), e expõe o **total de concluídos já calculado** (não é outro estado).
+- [X] O Provider fica em `main.jsx`, **acima** de quem consome o contexto.
+- [X] Os componentes consomem o contexto. **Nenhum componente intermediário recebe uma prop só para repassá-la**, e o `App` **não** possui estado de hábitos.
+- [X] Se um componente for usado **fora do Provider**, o erro é **claro e informa isso**.
+- [X] **Nada das etapas E5 e E6 quebra.**
 
 ### E8 · Páginas e rotas (Aula 08 · 15 pts)
 

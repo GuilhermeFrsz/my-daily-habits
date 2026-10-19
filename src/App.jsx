@@ -1,47 +1,43 @@
-import { useState } from "react";
-import "./App.css";
-import HabitList from "./components/HabitList";
-import Panel from "./components/Panel";
-import { initialHabits } from "./data/habits";
-
-
-
-export default function App() {
-  const completedCount = initialHabits.filter(
-    (habit) => habit.completed,
-  ).length;
-
-  function handleShowDetails(habitId) {
-    const habit = initialHabits.find((item) => item.id === habitId);
-
-    if (habit) {
-      const goal = habit.goal === undefined
-        ? "Sem meta definida"
-        : habit.goal;
-      console.log("Hábito solicitado:", habitId, habit);
-      window.alert(`| ID:${habit.id} \n${habit.title} — Meta: ${goal}`);
-    }
-  }
-
-  return (
-    <main className="app">
-      <header className="hero">
-        <p className="eyebrow">MY DAILY HABITS</p>
-        <h1>Pequenos hábitos, progresso visível.</h1>
-        <p>
-          {completedCount} de {initialHabits.length} hábitos concluídos.
-        </p>
-      </header>
-
-      <Panel title="Hábitos de hoje">
-        <HabitList
-          habits={initialHabits}
-          onShowDetails={handleShowDetails}
-        />
-      </Panel>
-      <Panel title="Sobre o projeto">
-        <p>My Daily Habits — projeto do Módulo 04.</p>
-      </Panel>
-    </main>
-  );
-}
+import { useContext, useEffect } from "react"; 
+import "./App.css"; 
+import HabitForm from "./components/HabitForm"; 
+import HabitList from "./components/HabitList"; 
+import Panel from "./components/Panel"; 
+import { HabitsContext } from "./context/HabitsContext"; 
+ 
+export default function App() { 
+  const habitsContext = useContext(HabitsContext); 
+ 
+  if (!habitsContext) { 
+    throw new Error("App precisa estar dentro de HabitsProvider."); 
+  } 
+ 
+  const { habits, completedCount } = habitsContext; 
+ 
+  useEffect(() => { 
+    const previousTitle = document.title; 
+    document.title = `${completedCount}/${habits.length} hábitos concluídos`; 
+ 
+    return () => { 
+      document.title = previousTitle; 
+    }; 
+  }, [completedCount, habits.length]); 
+ 
+  return ( 
+    <main className="app"> 
+      <header className="hero"> 
+        <p className="eyebrow">MY DAILY HABITS</p> 
+        <h1>Pequenos hábitos, progresso visível.</h1> 
+        <p>{completedCount} de {habits.length} hábitos concluídos.</p> 
+      </header> 
+ 
+      <Panel title="Novo hábito"> 
+        <HabitForm /> 
+      </Panel> 
+ 
+      <Panel title="Hábitos de hoje"> 
+        <HabitList /> 
+      </Panel> 
+    </main> 
+  ); 
+} 
